@@ -1,0 +1,33 @@
+                        Validar pessoa física.
+
+Pré condição: Possuir um CPF válido, email em formato válido.
+
+Passos: 
+
+1. Tipo de pessoa: Física.
+2. Preencher um Nome.
+3. Inserir um CPF válido.
+4. Preencher email com formato válido.
+5. Preencher demais opções não obrigatórias como imagem, sexo, data de nascimento.
+
+Resultado esperado: Deve gravar as informações sem exceções
+
+                        Validar pessoa física com informações inválidas.
+
+Pré condição: Possuir um CPF e email com formato inválidos.
+
+Passos:
+
+1. Tipo de pessoa: Física.
+2. Nome deixe em branco.
+3. Inserir CPF inválido.
+4. Inserir um email com formato inválido.
+
+Resultado esperado:
+
+Passo 2: Não deve gravar e deve retornar erro em tela solicitando a informação.
+Passo 3: Não deve gravar e deve retornar erro solcitando um CPF válido.
+Passo 4: Não deve gravar e deve retornar erro solicitando email válido.
+
+
+Pós condição testar o tipo de pessoa júridica com CNPJ válido e inválido.

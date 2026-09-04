@@ -1,0 +1,18 @@
+Partindo do príncipio que nos logs automáticos não há informação do estoque esgotado, e ao fazer a atualização
+manualmente o anúncio é atualizado para 'pausado sem estoque', comecaria verificando o corpo da requisição se
+a informação do 'estoque = 0' esta sendo passada no body.
+
+Levando em conta um cenário que o método para atualizar o anúncio para 'pausado sem estoque' seja o mesmo 
+(manualmente e automaticamente) faria uma comparação entre as duas requisições para buscar alguma diferença entre elas.
+
+Também verificaria se a requisição automática está realmente identificando quando o estoque é zero e se está sendo enviada.
+
+Caso seja enviada corretamente, verificaria o retorno para identificar se houve alguma exceção durante a atualização.
+
+Após caso não encontrasse uma resposta, verificaria logs de outros anúncios que estão funcionando e faria uma comparação
+com os 38 anúncios que não estão sendo atualizados e tentar encontrar alguma caracteristica em comum entre eles.
+
+As minhas principais hipóteses seriam: 
+    - A informação do estoque zerado não está sendo enviada na requisição.
+    - Alguma exceção está acontecendo no processo de atualização.
+    - Existe alguma caracteristica em comum entre os anúncios que está afetando essa funcionalidade.

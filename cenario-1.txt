@@ -1,0 +1,80 @@
+Casos de teste (caminho feliz)
+
+                            Cadastro e atualização de Preços e Anúncios.
+
+1- Criar um novo produto com quantidade, descrição, imagem e preços válidos.
+2- Validar se o anúncio foi criado corretamente.
+3- Alterar preço, descrição, imagens e verificar se o anúncio é sincronizado no marketplace.
+4- Deletar o anúncio ou deixar indisponível (dependendo da regra de negócio do sistema).
+
+Objetivo é verificar se as informações estão sendo exibidas corretamente na página do marketplace
+bem como as ações do CRUD.
+
+
+                            Sincronização de Estoque.
+
+1- Adicionar e remover produtos através do ERP.
+2- Verificar se o marketplace é atualizado corretamente.
+3- Alterar a quantidade do produto através do ERP.
+4- Verificar se foi alterado no marketplace corretamente.
+
+Objetivo é verificar a comunicação entre ERP e marketplace.
+                            
+                            
+                            Pedido e faturamento.
+
+1- Simular um processo de compra no marketplace.
+2- Validar se foi recebido pelo ERP.
+3- Conferir se o produto, quantidade, preço e demais dados do produto corresponde ao pedido.
+4- Realizar o recebimento e processar o faturamento do pedido, verificando informações como 
+status do pedido, recebimento do pagamento, posteriormente a emissão da nota fiscal.
+5- Verificar se é enviado as informações corretamente para o comprador incluindo o envio da NF.
+
+Objetivo é verificar a funcionalidade de compra através do marketplace e garantir que as informações
+e arquivos sejam repassados ao cliente final e receba seu pedido corretamente.
+
+Casos de teste (exceção e falha)
+
+
+                            Cadastro e atualização de Preços e Anúncios.
+
+1- Criar um novo produto com:
+    -Quantidade negativa e zerada
+    -Sem descrição
+    -Imagem em vários formatos diferentes e com tamanho superior.
+    -Preços negativos e zerados, sem formatação de valor (1200 != 1200.00 && 1200.00 != 1200,00).
+2- Verificar que o anúncio não deve ser criado e retornar um tratamento de erro em tela para o usuário
+com a informação incorreta.
+3- Verificar se é gerado algum tipo de log da exceção ocorrida.
+
+Objetivo é garantir que não serão criado anúncios com informações divergentes e que não causem prejuízos.
+
+
+                            Sincronização de Estoque.
+
+1- Tentar adicionar e remover produtos através do ERP com o serviço indisponível ou sem conexão com o servidor.
+2- Verificar se é gerado algum log. 
+3- Verificar se a ação fica em uma fila de espera aguardando para se executada.
+    -Caso fique pendente, reestabeleca a conexão para verificar se o registro é criado corretamente.
+    -Teste com mais de um anúncio na fila para verificar as informações de cada anúncio.
+4- Caso a ação não fiquem em espera, verifique se é retornado ao usuário a indisponibilidade do sistema e para
+tentar criar o anúncio mais tarde.
+
+Objetivo é garantir que mesmo com o serviço indisponível a rotina não seja prejudicada.
+
+
+                            Pedido e faturamento.
+
+1- Simular um processo de compra com a quantidade maior que a disponível em estoque.
+2- Verificar se é bloqueada o processo de compra, e não deve prosseguir para pagamento.
+3- Testar efetuar duas vendas simultaneas de um produto com apenas 1 unidade.
+
+Objetivo é garantir que não seja possível receber um pedido cuja quantidade não ultrapasse a existente.
+
+
+Eu daria prioridade para executar os testes que geram impactos financeiros como o Pedido e faturamento.
+Por segundo, o Cadastro e atualização do preços e anúncios. e por fim a sincronização de estoque.
+Então ficaria:
+    Pedido e faturamento -> prioridade: Muito alta.
+    Cadastro e atualização de preços e anúncios -> prioridade: Alta.
+    Sincronização de estoque -> prioridade: Média.

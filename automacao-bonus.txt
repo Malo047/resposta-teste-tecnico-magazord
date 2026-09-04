@@ -1,0 +1,12 @@
+Como você garantiria que cada execução do seu teste automatizado utilize um cupom válido e diferente?
+
+    Utilizaria uma base de dados com cupons válidos e utilizaria uma função para fazer a seleção de forma dinâmica
+em cada execução, e ao utilizar marcar aquele cupom como 'inválido' para garantir que não seja selecionado o mesmo
+cupom na próxima vez que executar a função. Dessa maneira não seria utilizado o mesmo cupom e seriam utilizados apenas
+cupons válidos. 
+
+ Como você validaria a tela de confirmação de pedido gerado sem depender do recebimento de um e-mail real?
+
+    Poderia validar dentro da própria aplicação, por exemplo nos testes automatizados que fiz no checkout do Sauce Demo
+ utilizei o titulo "Checkout complete!" para validar a finalização, poderia encontrar um elemento como o número do pedido ou 
+ mensagem de confirmação para validar se foi confirmado, dessa forma não dependeria do recebimento do email.

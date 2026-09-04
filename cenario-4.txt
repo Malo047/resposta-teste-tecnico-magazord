@@ -1,0 +1,138 @@
+                                Caso de teste: Login.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Pré condição: usuário e senha válidos pode utilizar Username: standard_user, Password: secret_sauce.
+--------------
+Passos: 
+
+1. Insira a informações de Username e Password disponíveis na pré condição.
+
+--------------
+Resultado esperado: Login deve ocorrer sem a mensagem de erros e ser direcionado para a página principal.
+
+
+_____________________________________________________________________________________________________________________________
+
+
+                                Caso de teste: Login inválido.
+
+---------------------------------------------------------------------------------------------------------------------------
+Passos: 
+
+1. Teste com Username e Password inválidos exemplo: Username: admin, Password: admin
+
+--------------
+
+Resultado esperado: Deve ser exibido a mensagem: Epic sadface: Username and password do not match any user in this service
+e não continuar com o login.
+
+_____________________________________________________________________________________________________________________________
+
+                                Caso de teste: Adicionar no carrinho.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Pré condição: Estar logado.
+
+---------------
+
+Passos: 
+
+1. Na página principal clique no botão "Add to cart" no card de um produto. 
+2. Selecione mais produtos clicnado em "Add to cart".
+3. Clique no ícone carrinho no canto superior direito.
+
+-----------------
+
+Resultado esperado: 
+1. O título do botão deve alterar para "Remove".
+    1.1 O ícone carrinho no canto superior direito deve aparecer 1.
+2. O ícone carrinho no canto superior direito deve aparecer a quantidade de produtos selecionados.
+3. Deve ser carregado a página "Your Cart" com os produtos selecionados na página principal.
+
+------------------
+
+Pós condição:
+
+1. Na página "Your cart" clique no botão "Continue Shoopping"
+
+Resultado esperado: Deve voltar para página principal.
+
+_____________________________________________________________________________________________________________________________
+
+
+
+                                    Caso de teste: Remover do carrinho
+
+---------------------------------------------------------------------------------------------------------------------------
+Pré condição: Estar logado e possuir produtos no carrinho.
+
+------------------
+
+Passos:
+
+1. Na página principal clique no botão 'Remove' de um produto que consta no seu carrinho.
+2. Acessar a página 'Your Cart' clicando no carrinho no canto superior direito.
+
+-------------------
+
+Resultado esperado:
+
+1. O ícone do carrinho no canto superior direito deve subtrair o produto.
+2. O produto subtraido não deve constar na página.
+
+_____________________________________________________________________________________________________________________________
+
+
+
+                                            Caso de teste: Checkout
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Pré condição: Estar logado e possuir produtos adicionados no carrinho.
+
+---------------------
+
+Passos:
+
+1. Na página "Your Cart" clique no botão Checkout.
+2. Preencher os campos First Name, Last Name e Zip/Postal Code e clicar em Continue.
+3. Clique no botão 'Finish'
+4. Clique no botão 'Generate PDF order'
+
+------------------------
+
+Resultado esperado: 
+1. Abrir a página Checkout: Your Information.
+
+2. Deve se encaminhado para a página: Checkout: Overview onde deve constar as informações do produto selecionado no carrinho
+as informações de pagamento 'Payment Information', informações de envio 'Shipping Information' e o preço total (Valor do produto + frete 'tax').
+
+3. Deve ser ser carregado a página 'Checkout: Complete!' agradecendo pela compra com os botões 'Back Home' e 'Generate PDF order'.
+
+4. Deve ser gerado um pdf com as informações do pedido e a data de compra.
+
+------------------------
+
+Pós condição:
+
+1. Clicando no botão 'Back Home' deve voltar para a página principal com o carrinho vazio.
+
+_____________________________________________________________________________________________________________________________
+
+
+                                        Caso de teste: Validar informações do comprador
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Pré condição: Estar logado e possuir produtos adicionados no carrinho.
+------------------
+
+Passos:
+
+1. Na página 'Your Cart' Clique no botão 'Checkout'.
+2. Clique no botão 'Continue' sem preencher nenhum campo.
+--------------
+
+Resultado esperado: Retorno de erro informando que são campos obrigatórios.
